@@ -3,6 +3,7 @@ extends Node
 @onready var opening_timer : Timer = $OpeningTimer
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Delay timer on opening the game and displaying logo

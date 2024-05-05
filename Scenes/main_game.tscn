@@ -12,6 +12,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -25,6 +29,7 @@ grow_vertical = 2
 texture = ExtResource("1_5lgut")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_fp4l4")]
-position = Vector2(0, 200)
+position = Vector2(576, 524)
