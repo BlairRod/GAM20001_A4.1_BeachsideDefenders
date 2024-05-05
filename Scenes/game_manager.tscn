@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci8xr2dq6mgm2"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_o3upj"]
+[ext_resource type="PackedScene" uid="uid://cyibifi4lpnva" path="res://Scenes/main_game.tscn" id="2_qk5nf"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_o3upj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172549, 0.305882, 0.831373, 1)
+
+[node name="OpeningTimer" type="Timer" parent="."]
+
+[node name="MainGame" parent="." instance=ExtResource("2_qk5nf")]
+
+[connection signal="timeout" from="OpeningTimer" to="." method="_on_opening_timer_timeout"]
