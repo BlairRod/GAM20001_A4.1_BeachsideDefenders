@@ -11,9 +11,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 # Called when the opening_timer countdown completes
 func _on_opening_timer_timeout() -> void:
-	pass # Replace with function body.
+	SceneSwitcher.switch_scene("res://Scenes/main_game.tscn")
