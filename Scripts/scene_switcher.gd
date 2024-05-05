@@ -12,6 +12,7 @@ func _ready() -> void:
 
 # Function called to switch scenes
 func scene_switcher(res_path) -> void:
+	# calls this method during idle time, after current game loop finishes
 	call_deferred("_deffered_switch_scene", res_path)
 
 func _deffered_switch_scene(res_path) -> void:

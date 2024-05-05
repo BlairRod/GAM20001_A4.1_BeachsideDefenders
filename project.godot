@@ -16,4 +16,4 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneSwitcher="*res://Scenes/scene_switcher.gd"
+SceneSwitcher="*res://Scripts/scene_switcher.gd"
