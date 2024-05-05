@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://0fdj0oxe5lby"]
 
 [ext_resource type="Texture2D" uid="uid://bhpdiccwr34wr" path="res://Assets/Images/Sprites/player.png" id="1_eeg43"]
-[ext_resource type="Script" path="res://Scenes/playercharacter.gd" id="1_jbkes"]
+[ext_resource type="Script" path="res://Scripts/playercharacter.gd" id="1_jbkes"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2div"]
 height = 38.0
