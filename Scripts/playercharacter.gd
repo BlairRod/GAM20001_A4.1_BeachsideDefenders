@@ -3,7 +3,7 @@ extends CharacterBody2D
 var speed = 200
 var padding = 20
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction = Input.get_axis("left","right")
 	velocity = direction * speed * transform.x
 	move_and_slide()
