@@ -13,6 +13,7 @@ As a group we chose Space Invaders as our game’s theme, but with a different s
 Controls:
 Move left = "Left" or "A"
 Move right = "Right" or "D"
+Pause game = "Esc"
 
 Debug controls:
 
