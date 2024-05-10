@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyibifi4lpnva"]
+[gd_scene load_steps=6 format=3 uid="uid://cyibifi4lpnva"]
 
 [ext_resource type="Texture2D" uid="uid://bucvp0kvu2i47" path="res://Assets/Images/Backgrounds/game.png" id="1_5lgut"]
 [ext_resource type="Script" path="res://Scripts/main_game.gd" id="1_po6r7"]
 [ext_resource type="PackedScene" uid="uid://0fdj0oxe5lby" path="res://Scenes/playercharacter.tscn" id="3_fp4l4"]
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="4_x4on1"]
+[ext_resource type="PackedScene" uid="uid://ckwkt51kc887x" path="res://UI/pause_menu.tscn" id="5_m0mok"]
 
 [node name="MainGame" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_po6r7")
 
 [node name="Control" type="Control" parent="."]
@@ -40,5 +42,11 @@ script = ExtResource("4_x4on1")
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]
 autostart = true
+
+[node name="PauseCanvas" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="PauseMenu" parent="PauseCanvas" node_paths=PackedStringArray("main_game") instance=ExtResource("5_m0mok")]
+main_game = NodePath("../..")
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]

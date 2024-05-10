@@ -1,5 +1,6 @@
 extends Node
 
+
 @onready var opening_timer : Timer = $OpeningTimer
 
 # Called when the node enters the scene tree for the first time.
@@ -16,3 +17,5 @@ func _process(_delta: float) -> void:
 # Called when the opening_timer countdown completes
 func _on_opening_timer_timeout() -> void:
 	SceneSwitcher.switch_scene("res://Scenes/main_game.tscn")
+
+
