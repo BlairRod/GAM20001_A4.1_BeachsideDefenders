@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var bullet: PackedScene
 @onready var spawn_point: Marker2D = $Muzzle
 @onready var cooldown := $Cooldown

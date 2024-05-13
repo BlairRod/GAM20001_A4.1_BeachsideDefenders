@@ -23,7 +23,11 @@ func _physics_process(delta: float) -> void:
 	position -= transform.y * speed
 
 func on_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		var enemy: Enemy = body as Enemy
+	pass # Replace with function body.
+
+
+func _on_area_entered(area):
+	if area is Enemy:
+		var enemy: Enemy = area as Enemy
 		enemy.apply_damage(damage)
 	queue_free()
