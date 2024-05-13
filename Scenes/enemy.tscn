@@ -18,6 +18,3 @@ texture = ExtResource("1_xg8yo")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -30)
-
-[node name="XTimer" type="Timer" parent="."]
-one_shot = true
