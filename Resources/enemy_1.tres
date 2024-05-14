@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://btjn48wjqwes7"]
+
+[ext_resource type="Script" path="res://Resources/enemy_config.gd" id="1_fb04r"]
+[ext_resource type="Texture2D" uid="uid://7wmu63dytui4" path="res://Assets/Images/Sprites/enemy.png" id="2_gvgon"]
+
+[resource]
+script = ExtResource("1_fb04r")
+sprite = ExtResource("2_gvgon")
+width = 1
+points = 10

@@ -5,12 +5,18 @@ class_name  Enemy
 @export var xspeed = 1000
 @export var yspeed = 3000
 @onready var xtimer = $XTimer
+@onready var sprite_2d = $Sprite2D
+
+var config: Resource
 
 var health: float = 100.0
 var rightcounter: int = 0
 var leftcounter: int = 0
 var downcounter: int = 0
 var leftRightMaxTicks: int = 45 #if you change the speed then you must change this value until the enemy reaches the edge of the screen
+
+func _ready():
+	sprite_2d.texture = config.sprite
 
 func _physics_process(delta):
 	if xtimer.is_stopped() and rightcounter < leftRightMaxTicks:

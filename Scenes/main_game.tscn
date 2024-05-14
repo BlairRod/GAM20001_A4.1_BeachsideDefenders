@@ -33,9 +33,3 @@ position = Vector2(576, 324)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_fp4l4")]
 position = Vector2(576, 524)
-
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.05
-autostart = true
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
