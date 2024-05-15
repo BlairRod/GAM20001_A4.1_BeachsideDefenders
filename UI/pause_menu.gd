@@ -1,6 +1,6 @@
 extends Control
 
-@export var main_game : main_game
+@export var main_game : MainGame
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
