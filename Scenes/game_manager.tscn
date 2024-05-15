@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci8xr2dq6mgm2"]
+[gd_scene load_steps=2 format=3 uid="uid://ci8xr2dq6mgm2"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_o3upj"]
-[ext_resource type="PackedScene" uid="uid://cyibifi4lpnva" path="res://Scenes/main_game.tscn" id="2_qk5nf"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_o3upj")
@@ -27,7 +26,5 @@ grow_vertical = 2
 color = Color(0.172549, 0.305882, 0.831373, 1)
 
 [node name="OpeningTimer" type="Timer" parent="."]
-
-[node name="MainGame" parent="." instance=ExtResource("2_qk5nf")]
 
 [connection signal="timeout" from="OpeningTimer" to="." method="_on_opening_timer_timeout"]

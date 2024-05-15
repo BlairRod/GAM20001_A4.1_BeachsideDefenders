@@ -19,10 +19,10 @@ func handle_time_to_live() -> void:
 	ttl_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	position -= transform.y * speed
 
-func on_body_entered(body: Node2D) -> void:
+func on_body_entered(_body: Node2D) -> void:
 	pass # Replace with function body.
 
 
