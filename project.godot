@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 SceneSwitcher="*res://Scripts/scene_switcher.gd"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 left={

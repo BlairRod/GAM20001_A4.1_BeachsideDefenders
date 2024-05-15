@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://knhcn1wtxmv4"]
+[gd_scene load_steps=3 format=3 uid="uid://knhcn1wtxmv4"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_rrbwt"]
-[ext_resource type="Texture2D" uid="uid://7wmu63dytui4" path="res://Assets/Images/Sprites/enemy.png" id="1_xg8yo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tghtk"]
 radius = 17.0
@@ -14,7 +13,6 @@ script = ExtResource("1_rrbwt")
 shape = SubResource("CapsuleShape2D_tghtk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xg8yo")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -30)
