@@ -1,6 +1,6 @@
 extends Area2D
 
-class_name Bullet
+class_name enemy_bullet
 
 var speed: float = 5.0
 var damage: float = 100.0
@@ -20,11 +20,12 @@ func handle_time_to_live() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	position -= transform.y * speed
+	position -= transform.y * -speed
 
 
 func _on_area_entered(area):
-	if area is Enemy:
-		var enemy: Enemy = area as Enemy
-		enemy.apply_damage(damage)
+	if area is Player:
+		var player: Player = area as Player
+		player.respawn()
+		print('You have been shot')
 	queue_free()
