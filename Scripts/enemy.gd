@@ -59,15 +59,14 @@ func apply_damage(damage: float) -> void:
 func enemy_shoots() -> void:
 	
 	if xtimer.is_stopped():
-		shoot_chance = randi_range(0,1000)
-		print("Rolled: %d" % shoot_chance)
+		shoot_chance = randi_range(0,100)
 		if killed_enemies < 10:
 			if shoot_chance <= killed_enemies:
-				var inst: enemy_bullet = bullet.instantiate()
+				var inst: EnemyBullet = bullet.instantiate()
 				get_parent().add_child(inst)
 				inst.transform = spawn_point.global_transform
 		else:
 			if shoot_chance <= 10:
-				var inst: enemy_bullet = bullet.instantiate()
+				var inst: EnemyBullet = bullet.instantiate()
 				get_parent().add_child(inst)
 				inst.transform = spawn_point.global_transform

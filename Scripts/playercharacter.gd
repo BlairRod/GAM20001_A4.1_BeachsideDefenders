@@ -5,9 +5,10 @@ class_name Player
 @export var bullet: PackedScene
 @onready var spawn_point: Marker2D = $Muzzle
 @onready var cooldown := $Cooldown
-@onready var Respawn := $Respawn
+@onready var respawn_timer := $Respawn
 
 var speed = 200
+var initial_speed = 200
 
 func _physics_process(delta):
 	var direction = Input.get_axis("left","right")
@@ -22,8 +23,12 @@ func _physics_process(delta):
 		inst.transform = spawn_point.global_transform
 		cooldown.start()
 
-func respawn():
-	queue_free()
-	Respawn.start()
-	if Respawn.is_stopped():
-		pass
+func respawn() -> void:
+	visible = false
+	speed = 0
+	position = Vector2(576, 524)
+	respawn_timer.start()
+
+func _on_respawn_timeout():
+	visible = true
+	speed = initial_speed

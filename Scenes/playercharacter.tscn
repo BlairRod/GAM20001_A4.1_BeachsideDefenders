@@ -26,5 +26,7 @@ position = Vector2(0, -30)
 one_shot = true
 
 [node name="Respawn" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 2.0
 one_shot = true
+
+[connection signal="timeout" from="Respawn" to="." method="_on_respawn_timeout"]

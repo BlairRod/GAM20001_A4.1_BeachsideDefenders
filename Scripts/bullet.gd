@@ -22,7 +22,6 @@ func handle_time_to_live() -> void:
 func _physics_process(delta: float) -> void:
 	position -= transform.y * speed
 
-
 func _on_area_entered(area):
 	if area is Enemy:
 		var enemy: Enemy = area as Enemy

@@ -1,10 +1,10 @@
 extends Area2D
 
-class_name enemy_bullet
+class_name EnemyBullet
 
 var speed: float = 5.0
 var damage: float = 100.0
-var time_to_live: float =  1.75
+var time_to_live: float =  2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,12 +20,11 @@ func handle_time_to_live() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	position -= transform.y * -speed
+	position += transform.y * speed
 
-
-func _on_area_entered(area):
-	if area is Player:
-		var player: Player = area as Player
+func _on_body_entered(body):
+	if body is Player:
+		var player: Player = body as Player
 		player.respawn()
 		print('You have been shot')
 	queue_free()
