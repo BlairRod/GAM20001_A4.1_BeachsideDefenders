@@ -3,9 +3,11 @@ extends CharacterBody2D
 class_name Player
 
 @export var bullet: PackedScene
+@export var playerLives = 3
 @onready var spawn_point: Marker2D = $Muzzle
 @onready var cooldown := $Cooldown
 @onready var respawn_timer := $Respawn
+@onready var lifeLabel = $"../CanvasLayer/UserInterface/LifeLabel"
 
 var speed = 200
 var initial_speed = 200
@@ -26,6 +28,8 @@ func _physics_process(delta):
 func respawn() -> void:
 	visible = false
 	speed = 0
+	playerLives -= 1
+	lifeLabel.text = "Lives: %d" % playerLives
 	position = Vector2(576, 524)
 	respawn_timer.start()
 
