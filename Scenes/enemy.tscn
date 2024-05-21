@@ -8,7 +8,7 @@
 radius = 17.0
 height = 34.0
 
-[node name="enemy" type="Area2D"]
+[node name="enemy" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_rrbwt")
 bullet = ExtResource("2_u673r")
 

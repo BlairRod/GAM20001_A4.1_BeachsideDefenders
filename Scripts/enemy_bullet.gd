@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body):
 	if body is Player:
 		var player: Player = body as Player
-		
 		player.respawn()
 		print('You have been shot')
 	queue_free()

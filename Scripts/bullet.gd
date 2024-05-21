@@ -3,7 +3,7 @@ extends Area2D
 class_name Bullet
 
 var speed: float = 5.0
-var damage: float = 100.0
+var killed_enemies: int = 1
 var time_to_live: float =  1.75
 
 # Called when the node enters the scene tree for the first time.
@@ -22,8 +22,9 @@ func handle_time_to_live() -> void:
 func _physics_process(delta: float) -> void:
 	position -= transform.y * speed
 
+
 func _on_area_entered(area):
 	if area is Enemy:
 		var enemy: Enemy = area as Enemy
-		enemy.apply_damage(damage)
+		enemy.apply_damage()
 	queue_free()
