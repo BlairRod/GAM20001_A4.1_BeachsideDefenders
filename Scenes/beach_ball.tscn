@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b35lbiqwcr5ny"]
+
+[ext_resource type="Script" path="res://Scripts/beachball.gd" id="1_p42xg"]
+[ext_resource type="Texture2D" uid="uid://clo8p15itaprj" path="res://Assets/Images/Sprites/beach_ball.png" id="2_jp44w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3kyof"]
+friction = 5.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q50c7"]
+radius = 15.0
+
+[node name="BeachBall" type="RigidBody2D"]
+position = Vector2(305, 318)
+physics_material_override = SubResource("PhysicsMaterial_3kyof")
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_p42xg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q50c7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jp44w")

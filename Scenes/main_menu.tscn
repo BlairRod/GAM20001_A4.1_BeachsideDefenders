@@ -1,0 +1,175 @@
+[gd_scene load_steps=19 format=3 uid="uid://dqe2jf8sr538"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_i06cp"]
+[ext_resource type="Texture2D" uid="uid://1ivyg7ahg8cd" path="res://Assets/Images/Backgrounds/MainMenu/main_menu_1.png" id="2_rnb8c"]
+[ext_resource type="Texture2D" uid="uid://4h2uclxa18a2" path="res://Assets/Images/Buttons/start_normal.png" id="3_abeud"]
+[ext_resource type="Texture2D" uid="uid://dx1c5ltkjhc24" path="res://Assets/Images/Backgrounds/MainMenu/main_menu_2.png" id="3_oxxjf"]
+[ext_resource type="Texture2D" uid="uid://b68hsc78jc1h6" path="res://Assets/Images/Buttons/start_pressed.png" id="4_33o6o"]
+[ext_resource type="Texture2D" uid="uid://d4ntn2by3p5v4" path="res://Assets/Images/Backgrounds/MainMenu/main_menu_3.png" id="4_l368b"]
+[ext_resource type="Texture2D" uid="uid://cw2qky4yviqty" path="res://Assets/Images/Buttons/exit_pressed.png" id="4_v4328"]
+[ext_resource type="Texture2D" uid="uid://cxi00ta3jwof2" path="res://Assets/Images/Backgrounds/MainMenu/main_menu_4.png" id="5_fyvyr"]
+[ext_resource type="Texture2D" uid="uid://bbo626go1q6xr" path="res://Assets/Images/Buttons/start_hovered.png" id="5_qe65k"]
+[ext_resource type="Texture2D" uid="uid://ciksdy80jplt5" path="res://Assets/Images/Buttons/exit_normal.png" id="6_tek3k"]
+[ext_resource type="Texture2D" uid="uid://dcy0jwl8lupkt" path="res://Assets/Images/Buttons/exit_hovered.png" id="7_wg1bb"]
+[ext_resource type="PackedScene" uid="uid://b35lbiqwcr5ny" path="res://Scenes/beach_ball.tscn" id="12_7csue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpiaw"]
+size = Vector2(200, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgflk"]
+size = Vector2(200, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de0yr"]
+size = Vector2(99, 29)
+
+[sub_resource type="Animation" id="Animation_d16go"]
+resource_name = "background"
+length = 3.2
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_oxxjf"), ExtResource("4_l368b"), ExtResource("5_fyvyr"), ExtResource("4_l368b")]
+}
+
+[sub_resource type="Animation" id="Animation_tysqv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_rnb8c")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rmyml"]
+_data = {
+"RESET": SubResource("Animation_tysqv"),
+"background": SubResource("Animation_d16go")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i06cp")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_rnb8c")
+
+[node name="Start" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_abeud")
+texture_pressed = ExtResource("4_33o6o")
+texture_hover = ExtResource("5_qe65k")
+
+[node name="StartArea2D" type="Area2D" parent="Start"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start/StartArea2D"]
+position = Vector2(100, 25)
+shape = SubResource("RectangleShape2D_tpiaw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Start"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start/StaticBody2D"]
+position = Vector2(100, 25)
+shape = SubResource("RectangleShape2D_wgflk")
+
+[node name="ExitButton" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 391.0
+offset_top = 452.0
+offset_right = 494.0
+offset_bottom = 485.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Exit" type="TextureButton" parent="ExitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -15.0
+offset_right = 50.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_tek3k")
+texture_pressed = ExtResource("4_v4328")
+texture_hover = ExtResource("7_wg1bb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ExitButton"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitButton/StaticBody2D"]
+position = Vector2(51.5, 16.5)
+shape = SubResource("RectangleShape2D_de0yr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="OuterCollision" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-9, -1, -17, 661, 1163, 658, 1162, -15, 0, -10, 0, 0, 1152, 0, 1152, 648, 0, 648, 0, 0)
+
+[node name="BeachsideCollision" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(108, 35, 108, 45, 114, 44, 114, 97, 105, 98, 105, 113, 168, 112, 279, 112, 363.955, 113.19, 442.003, 114.284, 630, 115, 745.5, 115, 868, 115, 869, 87, 853, 87, 853, 58, 867, 59, 866, 33, 804, 34, 804, 49, 784, 60, 771, 40, 756, 34, 708, 34, 705, 47, 686, 46, 686, 37, 651, 33, 648, 47, 630, 48, 621, 37, 607, 33, 587, 33, 572, 43, 571, 64, 548, 46, 547, 34, 513, 33, 514, 48, 497, 48, 496, 34, 462, 34, 460, 49, 440, 51, 430, 37, 411, 33, 387, 38, 372, 55, 372, 84, 345, 90, 323, 34, 305, 33, 281, 96, 257, 97, 257, 85, 243, 85, 242, 79, 242, 67, 257, 59, 255, 31, 235, 33, 198, 34, 195, 48, 173, 55, 166, 39, 137, 34)
+
+[node name="DefendersCollision" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(106, 140, 105, 154, 114, 156, 114, 203, 105, 203, 106, 218, 152, 218, 174, 206, 177, 196, 200, 203, 202, 218, 261, 218, 261, 193, 281, 202, 280, 217, 321, 218, 319, 204, 356, 205, 358, 218, 420, 218, 421, 200, 437, 204, 439, 217, 477, 219, 479, 202, 485, 200, 498, 218, 517, 219, 518, 197, 544, 206, 545, 219, 595, 219, 606, 210, 613, 200, 640, 206, 639, 218, 698, 219, 700, 195, 719, 205, 719, 221, 757, 219, 756, 205, 763, 204, 776, 219, 789, 219, 790, 200, 807, 202, 816, 215, 835, 219, 857, 219, 869, 203, 868, 184, 853, 174, 855, 164, 868, 162, 868, 148, 854, 141, 740, 141, 593, 140, 452, 140, 303, 141, 152, 142)
+
+[node name="IconCollision" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(941, 172, 925, 161, 923, 132, 941, 118, 942, 107, 960, 98, 960, 90, 977, 66, 1012, 50, 1047, 57, 1079, 82, 1097, 109, 1110, 126, 1123, 142, 1119, 167, 1107, 170, 1105, 180, 1092, 189, 1080, 184, 1067, 172, 1059, 184, 1059, 197, 1046, 202, 994, 203, 985, 196, 985, 183, 976, 173, 962, 190, 946, 188, 941, 181)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rmyml")
+}
+
+[node name="Balls" type="Node" parent="."]
+
+[node name="BeachBall" parent="Balls" instance=ExtResource("12_7csue")]
+position = Vector2(908, 326)
+
+[node name="BeachBall2" parent="Balls" instance=ExtResource("12_7csue")]
+position = Vector2(629, 461)
+
+[node name="BeachBall3" parent="Balls" instance=ExtResource("12_7csue")]
+position = Vector2(170, 410)
+
+[node name="BeachBall4" parent="Balls" instance=ExtResource("12_7csue")]
+position = Vector2(945, 569)
+
+[node name="BeachBall5" parent="Balls" instance=ExtResource("12_7csue")]
