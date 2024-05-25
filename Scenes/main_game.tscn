@@ -38,6 +38,7 @@ position = Vector2(576, 524)
 
 [node name="PauseCanvas" type="CanvasLayer" parent="."]
 process_mode = 2
+visible = false
 
 [node name="PauseMenu" parent="PauseCanvas" node_paths=PackedStringArray("main_game") instance=ExtResource("4_2oskh")]
 main_game = NodePath("../..")
