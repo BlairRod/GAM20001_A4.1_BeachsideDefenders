@@ -25,7 +25,7 @@ func _on_resume_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	main_game.game_paused = false
-	SceneSwitcher.switch_scene("res://Scenes/game_manager.tscn")
+	SceneSwitcher.switch_scene("res://Scenes/main_menu.tscn")
 
 
 func _on_exit_pressed() -> void:

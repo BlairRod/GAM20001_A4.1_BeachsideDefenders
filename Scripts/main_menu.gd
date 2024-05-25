@@ -25,3 +25,11 @@ func _process(_delta: float) -> void:
 func reverse_exit_button():
 	exit_rotation = -exit_rotation
 	exit_speed = -exit_speed
+
+
+func _on_start_pressed() -> void:
+	SceneSwitcher.switch_scene("res://Scenes/main_game.tscn")
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()

@@ -26,5 +26,3 @@ grow_vertical = 2
 color = Color(0.172549, 0.305882, 0.831373, 1)
 
 [node name="OpeningTimer" type="Timer" parent="."]
-
-[connection signal="timeout" from="OpeningTimer" to="." method="_on_opening_timer_timeout"]
