@@ -48,9 +48,9 @@ func spawn_enemy(enemy_config, spawn_position: Vector2):
 	enemy.global_position = spawn_position
 	add_child(enemy)
 
-
-# Key input ebent handling
+# Key input event handling
 func _input(event : InputEvent):
 	# Esc key pauses game
 	if event.is_action_pressed("ui_cancel"):
+		$PauseCanvas.show()
 		game_paused = !game_paused
