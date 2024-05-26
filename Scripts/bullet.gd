@@ -2,6 +2,7 @@ extends Area2D
 
 class_name Bullet
 
+@export var killCount = 0
 var speed: float = 5.0
 var killed_enemies: int = 1
 var time_to_live: float =  1.75
@@ -27,4 +28,6 @@ func _on_area_entered(area):
 	if area is Enemy:
 		var enemy: Enemy = area as Enemy
 		enemy.apply_damage()
+		
 	queue_free()
+	killCount += 1
