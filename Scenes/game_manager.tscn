@@ -11,7 +11,6 @@ script = ExtResource("1_o3upj")
 [node name="MainGame" parent="." instance=ExtResource("1_chp8v")]
 
 [node name="PauseCanvas" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PauseMenu" parent="PauseCanvas" node_paths=PackedStringArray("game_manager") instance=ExtResource("3_vt43b")]
 game_manager = NodePath("../..")
