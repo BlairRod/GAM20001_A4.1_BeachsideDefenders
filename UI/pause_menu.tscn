@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6ylpxxyfq51m"]
+[gd_scene load_steps=13 format=3 uid="uid://b6ylpxxyfq51m"]
 
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="1_14d8j"]
 [ext_resource type="Texture2D" uid="uid://rnhou4q75hgd" path="res://Assets/Images/Buttons/Pause/Pause_Panel_1.png" id="2_o8qmi"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://7wsq8xqtw8ki" path="res://Assets/Images/Buttons/Pause/Exit_normal.png" id="9_23yh3"]
 [ext_resource type="Texture2D" uid="uid://c1ktlsk0lppge" path="res://Assets/Images/Buttons/Pause/Exit_pressed.png" id="10_gal65"]
 [ext_resource type="Texture2D" uid="uid://bul1c552kuot" path="res://Assets/Images/Buttons/Pause/Exit_hovered.png" id="11_18myg"]
+[ext_resource type="AudioStream" uid="uid://f3g7462dqc4j" path="res://Assets/Sound/music/soon-may-the-wellerman-come-traditional-whaler-song-shanty-2943.mp3" id="12_phdvd"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -72,6 +73,10 @@ texture_normal = ExtResource("9_23yh3")
 texture_pressed = ExtResource("10_gal65")
 texture_hover = ExtResource("11_18myg")
 stretch_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_phdvd")
+autoplay = true
 
 [connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
