@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://duj4nyt4ys004"]
+
+[ext_resource type="Script" path="res://Resources/enemy_config.gd" id="1_dh7pt"]
+[ext_resource type="Texture2D" uid="uid://bah2tehsfu4bg" path="res://Assets/Images/Sprites/Enemies/enemy_4.png" id="2_lrair"]
+
+[resource]
+script = ExtResource("1_dh7pt")
+sprite = ExtResource("2_lrair")
+width = 1
+points = 50
+enemy_animation = "move_4"

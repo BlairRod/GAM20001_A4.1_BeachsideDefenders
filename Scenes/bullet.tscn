@@ -1,11 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://ouc1lsppmo3m"]
+[gd_scene load_steps=7 format=3 uid="uid://ouc1lsppmo3m"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_g1v46"]
-[ext_resource type="Texture2D" uid="uid://lbc6sxb5bgdo" path="res://Assets/Images/Sprites/player_bullet.png" id="1_y0nsv"]
+[ext_resource type="Texture2D" uid="uid://b572kn7mkvuro" path="res://Assets/Images/Spritesheet/Spritesheet.png" id="2_7ghju"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r1nlv"]
 radius = 2.0
 height = 10.0
+
+[sub_resource type="Animation" id="Animation_mmaov"]
+resource_name = "move"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [50, 51, 52]
+}
+
+[sub_resource type="Animation" id="Animation_capwv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [50]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2586m"]
+_data = {
+"RESET": SubResource("Animation_capwv"),
+"move": SubResource("Animation_mmaov")
+}
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_g1v46")
@@ -15,12 +54,20 @@ scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_r1nlv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.5708
+rotation = 1.57079
 scale = Vector2(3, 3)
-texture = ExtResource("1_y0nsv")
+texture = ExtResource("2_7ghju")
+hframes = 10
+vframes = 10
+frame = 50
 
 [node name="bulletSFX" type="AudioStreamPlayer" parent="."]
 volume_db = -20.0
 autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2586m")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

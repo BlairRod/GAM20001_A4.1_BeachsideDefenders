@@ -2,6 +2,7 @@ extends Area2D
 
 class_name Bullet
 
+@onready var bullet_animation : AnimationPlayer = $AnimationPlayer
 var speed: float = 5.0
 var damage: float = 100.0
 var time_to_live: float =  1.75
@@ -9,6 +10,7 @@ var time_to_live: float =  1.75
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	handle_time_to_live()
+	bullet_animation.play("move")
 
 func handle_time_to_live() -> void:
 	var ttl_timer: Timer = Timer.new()

@@ -11,7 +11,6 @@ bounce = 1.0
 radius = 15.0
 
 [node name="BeachBall" type="RigidBody2D"]
-position = Vector2(305, 318)
 physics_material_override = SubResource("PhysicsMaterial_3kyof")
 gravity_scale = 0.0
 max_contacts_reported = 1

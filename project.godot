@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneSwitcher="*res://Scripts/scene_switcher.gd"
+GlobalSingleton="*res://Scripts/global_singleton.gd"
 
 [display]
 

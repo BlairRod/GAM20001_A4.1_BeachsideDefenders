@@ -23,6 +23,8 @@ const VERTICAL_SPACING = 32
 const START_Y_POSITION = 20
 const START_X_POSITION = 195
 
+#var enemies_array = [Enemy]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var enemy_1_res = preload("res://Resources/enemy_1.tres")
@@ -42,11 +44,13 @@ func _ready():
 			
 			spawn_enemy(enemy_config, spawn_position)
 
+
 func spawn_enemy(enemy_config, spawn_position: Vector2):
 	var enemy = enemy_scene.instantiate() as Enemy
 	enemy.config = enemy_config
 	enemy.global_position = spawn_position
 	add_child(enemy)
+	#enemies_array.append(enemy)
 
 ## Key input event handling
 #func _input(event : InputEvent):
