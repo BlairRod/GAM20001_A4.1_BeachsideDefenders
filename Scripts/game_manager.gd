@@ -1,18 +1,18 @@
 extends Node
 
-@onready var opening_timer : Timer = $OpeningTimer
+class_name GameManager
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	# Delay timer on opening the game and displaying logo
-	opening_timer.wait_time = 2
-	opening_timer.start()
+signal toggle_game_paused(is_paused : bool)
 
+var game_paused : bool = false:
+	get:
+		return game_paused
+	set(value):
+		game_paused = value
+		get_tree().paused = game_paused
+		emit_signal("toggle_game_paused", game_paused)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-# Called when the opening_timer countdown completes
-func _on_opening_timer_timeout() -> void:
-	SceneSwitcher.switch_scene("res://Scenes/main_game.tscn")
+func _input(event : InputEvent) -> void:
+	if(event.is_action_pressed("ui_cancel")):
+		$PauseCanvas.show()
+		game_paused = !game_paused

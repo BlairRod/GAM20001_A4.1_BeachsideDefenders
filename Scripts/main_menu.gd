@@ -28,7 +28,7 @@ func reverse_exit_button():
 
 
 func _on_start_pressed() -> void:
-	SceneSwitcher.switch_scene("res://Scenes/main_game.tscn")
+	SceneSwitcher.switch_scene("res://Scenes/game_manager.tscn")
 
 
 func _on_exit_pressed() -> void:
