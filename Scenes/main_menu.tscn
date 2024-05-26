@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqe2jf8sr538"]
+[gd_scene load_steps=24 format=3 uid="uid://dqe2jf8sr538"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_i06cp"]
 [ext_resource type="Texture2D" uid="uid://1ivyg7ahg8cd" path="res://Assets/Images/Backgrounds/MainMenu/main_menu_1.png" id="2_rnb8c"]
@@ -8,9 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://b68hsc78jc1h6" path="res://Assets/Images/Buttons/MainMenu/start_pressed.png" id="4_ocqra"]
 [ext_resource type="Texture2D" uid="uid://cxi00ta3jwof2" path="res://Assets/Images/Backgrounds/MainMenu/main_menu_4.png" id="5_fyvyr"]
 [ext_resource type="Texture2D" uid="uid://bbo626go1q6xr" path="res://Assets/Images/Buttons/MainMenu/start_hovered.png" id="5_ompt3"]
-[ext_resource type="Texture2D" uid="uid://ciksdy80jplt5" path="res://Assets/Images/Buttons/MainMenu/exit_normal.png" id="6_6h3gv"]
-[ext_resource type="Texture2D" uid="uid://cw2qky4yviqty" path="res://Assets/Images/Buttons/MainMenu/exit_pressed.png" id="7_11fj2"]
-[ext_resource type="Texture2D" uid="uid://bpae2mrjqhrsm" path="res://Assets/Images/Buttons/MainMenu/exit_hovered.png" id="8_vb3sp"]
+[ext_resource type="Script" path="res://Scripts/beachball.gd" id="6_026pa"]
+[ext_resource type="Texture2D" uid="uid://dksanyoctfded" path="res://Assets/Images/Buttons/End/short_plank_normal.png" id="7_n1l7w"]
+[ext_resource type="Texture2D" uid="uid://owhs4cmw5yvd" path="res://Assets/Images/Buttons/End/short_plank_pressed.png" id="8_87lp3"]
+[ext_resource type="Texture2D" uid="uid://biikequjyl7pk" path="res://Assets/Images/Buttons/End/short_plank_hovered.png" id="9_omfka"]
+[ext_resource type="FontFile" uid="uid://dvb822dfcqdci" path="res://Themes/vehicle_breaks_down/VehicleBreaksDown-Regular.ttf" id="10_1rveo"]
 [ext_resource type="PackedScene" uid="uid://b35lbiqwcr5ny" path="res://Scenes/beach_ball.tscn" id="12_7csue"]
 [ext_resource type="AudioStream" uid="uid://cuises8xbnyt7" path="res://Assets/Sound/music/the-beach-lofi-track-194510.mp3" id="13_shgmu"]
 
@@ -20,8 +22,19 @@ size = Vector2(200, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgflk"]
 size = Vector2(200, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_de0yr"]
-size = Vector2(99, 29)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s4o3g"]
+friction = 5.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4y03"]
+size = Vector2(100, 30)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v2gbk"]
+line_spacing = 1.0
+font = ExtResource("10_1rveo")
+font_size = 27
+font_color = Color(0.0588235, 0, 0, 1)
+shadow_size = 0
 
 [sub_resource type="Animation" id="Animation_tysqv"]
 length = 0.001
@@ -107,40 +120,47 @@ shape = SubResource("RectangleShape2D_tpiaw")
 position = Vector2(100, 25)
 shape = SubResource("RectangleShape2D_wgflk")
 
-[node name="ExitButton" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 391.0
-offset_top = 452.0
-offset_right = 494.0
-offset_bottom = 485.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="ExitButton" type="RigidBody2D" parent="."]
+position = Vector2(821, 531)
+rotation = -0.261799
+physics_material_override = SubResource("PhysicsMaterial_s4o3g")
+gravity_scale = 0.0
+script = ExtResource("6_026pa")
 
-[node name="Exit" type="TextureButton" parent="ExitButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitButton"]
+shape = SubResource("RectangleShape2D_v4y03")
+
+[node name="TextureButton" type="TextureButton" parent="ExitButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -50.0
 offset_top = -15.0
 offset_right = 50.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("6_6h3gv")
-texture_pressed = ExtResource("7_11fj2")
-texture_hover = ExtResource("8_vb3sp")
+texture_normal = ExtResource("7_n1l7w")
+texture_pressed = ExtResource("8_87lp3")
+texture_hover = ExtResource("9_omfka")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ExitButton"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitButton/StaticBody2D"]
-position = Vector2(51.5, 16.5)
-shape = SubResource("RectangleShape2D_de0yr")
+[node name="Label" type="Label" parent="ExitButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -12.0
+offset_right = 38.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_v2gbk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="OuterCollision" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-9, -1, -17, 661, 1163, 658, 1162, -15, 0, -10, 0, 0, 1152, 0, 1152, 648, 0, 648, 0, 0)
@@ -162,22 +182,28 @@ libraries = {
 [node name="Balls" type="Node" parent="."]
 
 [node name="BeachBall" parent="Balls" instance=ExtResource("12_7csue")]
-position = Vector2(908, 326)
+position = Vector2(353, 33)
+rotation = -0.357792
 
 [node name="BeachBall2" parent="Balls" instance=ExtResource("12_7csue")]
-position = Vector2(629, 461)
+position = Vector2(120, 277)
+rotation = 0.820305
 
 [node name="BeachBall3" parent="Balls" instance=ExtResource("12_7csue")]
-position = Vector2(170, 410)
+position = Vector2(565, 467)
+rotation = -0.410152
 
 [node name="BeachBall4" parent="Balls" instance=ExtResource("12_7csue")]
-position = Vector2(945, 569)
+position = Vector2(1028, 300)
+rotation = 0.733038
 
 [node name="BeachBall5" parent="Balls" instance=ExtResource("12_7csue")]
+position = Vector2(223, 563)
+rotation = -2.22879
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_shgmu")
 autoplay = true
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="ExitButton/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ExitButton/TextureButton" to="." method="_on_texture_button_pressed"]

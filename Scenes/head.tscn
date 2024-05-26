@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bju66bquejdxl"]
+
+[ext_resource type="Script" path="res://Scripts/beachball.gd" id="1_ikwjp"]
+[ext_resource type="Texture2D" uid="uid://c6k7nnwwnm17e" path="res://Assets/Images/Buttons/End/head.png" id="2_a1xk4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3kyof"]
+friction = 5.0
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4jaqb"]
+height = 28.0
+
+[node name="Head" type="RigidBody2D"]
+position = Vector2(183, 169)
+physics_material_override = SubResource("PhysicsMaterial_3kyof")
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_ikwjp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_4jaqb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a1xk4")
