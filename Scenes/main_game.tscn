@@ -7,7 +7,6 @@
 
 [node name="MainGame" type="Node2D"]
 process_mode = 1
-
 script = ExtResource("1_po6r7")
 
 [node name="Control" type="Control" parent="."]

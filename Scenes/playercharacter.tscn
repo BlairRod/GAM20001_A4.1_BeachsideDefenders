@@ -197,9 +197,9 @@ libraries = {
 "": SubResource("AnimationLibrary_8wspx")
 }
 
-[connection signal="animation_finished" from="PlayerAnimations" to="." method="_on_player_animations_animation_finished"]
 [node name="Respawn" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
+[connection signal="animation_finished" from="PlayerAnimations" to="." method="_on_player_animations_animation_finished"]
 [connection signal="timeout" from="Respawn" to="." method="_on_respawn_timeout"]

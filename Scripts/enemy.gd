@@ -59,7 +59,7 @@ func apply_damage() ->void:
 func enemy_shoots() -> void:
 	
 	if xtimer.is_stopped():
-		shoot_chance = randi_range(0,1000)
+		shoot_chance = randi_range(0,100)
 		if killed_enemies < 10:
 			if shoot_chance <= killed_enemies:
 				var inst: EnemyBullet = bullet.instantiate()

@@ -28,3 +28,8 @@ func _on_body_entered(body):
 		player.respawn()
 		print('You have been shot')
 	queue_free()
+
+
+func _on_area_entered(area):
+	if area is Bullet:
+		queue_free()
