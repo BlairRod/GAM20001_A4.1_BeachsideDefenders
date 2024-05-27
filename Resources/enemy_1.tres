@@ -8,4 +8,6 @@ script = ExtResource("1_fb04r")
 sprite = ExtResource("2_cjvmm")
 width = 1
 points = 10
-enemy_animation = "move_1"
+enemy_move_animation = "move_1"
+enemy_death_animation = "death_1"
+enemy_shoot_animation = "shoot_1"

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
+@export var main_game : MainGame
 @export var bullet: PackedScene
 @export var playerLives = 3
 @onready var spawn_point: Marker2D = $Muzzle
@@ -44,18 +45,26 @@ func _physics_process(_delta):
 		get_parent().add_child(inst)
 		inst.transform = spawn_point.global_transform
 		cooldown.start()
+		$FireSFX.play() 
 
 func _on_player_animations_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "fire"):
 		is_shooting = false
 
 func respawn() -> void:
+	if(playerLives <= 0):
+		OutOfLives()
 	visible = false
 	speed = 0
 	playerLives -= 1
 	lifeLabel.text = "Lives: %d" % playerLives
 	position = Vector2(576, 524)
 	respawn_timer.start()
+
+func OutOfLives():
+	#print("No Lives Left")
+	GlobalSingleton.GameWon = false
+	main_game.EndGame()
 
 func _on_respawn_timeout():
 	visible = true

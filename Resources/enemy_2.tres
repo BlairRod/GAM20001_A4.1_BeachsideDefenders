@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://daf7g72ww7dv"]
 
 [ext_resource type="Script" path="res://Resources/enemy_config.gd" id="1_mham3"]
-[ext_resource type="Texture2D" uid="uid://dc1dl1d84cfpn" path="res://Assets/Images/Sprites/Enemies/enemy_1.png" id="2_tbf0h"]
+[ext_resource type="Texture2D" uid="uid://0qersj2re2st" path="res://Assets/Images/Sprites/Enemies/enemy_3.png" id="2_ca14s"]
 
 [resource]
 script = ExtResource("1_mham3")
-sprite = ExtResource("2_tbf0h")
+sprite = ExtResource("2_ca14s")
 width = 1
-points = 10
-enemy_animation = "move_1"
+points = 20
+enemy_move_animation = "move_2"
+enemy_death_animation = "death_2"
+enemy_shoot_animation = "shoot_2"
