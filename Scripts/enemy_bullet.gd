@@ -19,7 +19,7 @@ func handle_time_to_live() -> void:
 	ttl_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	position += transform.y * speed
 
 func _on_body_entered(body):

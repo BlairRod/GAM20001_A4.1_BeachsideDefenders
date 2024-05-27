@@ -13,7 +13,7 @@ class_name  Enemy
 
 var config: Resource
 
-var score = 0
+var score : int = 0
 var shoot_chance
 @export var killed_enemies: int = 0
 var health: float = 100.0
@@ -25,7 +25,7 @@ var leftRightMaxTicks: int = 45 #if you change the speed then you must change th
 func _ready():
 	sprite_2d.texture = config.sprite
 
-func _process(delta):
+func _process(_delta):
 	enemy_shoots()
 
 func _physics_process(delta):
@@ -54,7 +54,8 @@ func apply_damage() ->void:
 	queue_free()
 	score += 10
 	killed_enemies += 1
-	score_label.text = "Score: %s" % score
+	print(killed_enemies)
+	score_label.text = "Score: %s" % str(score * killed_enemies)
 
 func enemy_shoots() -> void:
 	

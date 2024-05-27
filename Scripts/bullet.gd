@@ -37,3 +37,4 @@ func _on_area_entered(area):
 		
 	queue_free()
 	killCount += 1
+	print(killCount)
