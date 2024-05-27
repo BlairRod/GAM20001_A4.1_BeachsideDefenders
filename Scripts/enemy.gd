@@ -4,11 +4,18 @@ class_name  Enemy
 
 @export var xspeed = 1000
 @export var yspeed = 3000
+@export var bullet: PackedScene
+@export var points = 10
+@onready var spawn_point: Marker2D = $Marker2D
 @onready var xtimer = $XTimer
 @onready var sprite_2d = $Sprite2D
+@onready var score_label = $"../CanvasLayer/UserInterface/ScoreLabel"
 
 var config: Resource
 
+var score = 0
+var shoot_chance
+@export var killed_enemies: int = 0
 var health: float = 100.0
 var rightcounter: int = 0
 var leftcounter: int = 0
@@ -17,6 +24,9 @@ var leftRightMaxTicks: int = 45 #if you change the speed then you must change th
 
 func _ready():
 	sprite_2d.texture = config.sprite
+
+func _process(delta):
+	enemy_shoots()
 
 func _physics_process(delta):
 	if xtimer.is_stopped() and rightcounter < leftRightMaxTicks:
@@ -40,8 +50,23 @@ func _physics_process(delta):
 		leftcounter = 0
 		downcounter = 0
 
+func apply_damage() ->void:
+	queue_free()
+	score += 10
+	killed_enemies += 1
+	score_label.text = "Score: %s" % score
 
-func apply_damage(damage: float) -> void:
-	health = clamp(health - damage, 0.0, 100.0)
-	if health == 0.0:
-		queue_free()
+func enemy_shoots() -> void:
+	
+	if xtimer.is_stopped():
+		shoot_chance = randi_range(0,1000)
+		if killed_enemies < 10:
+			if shoot_chance <= killed_enemies:
+				var inst: EnemyBullet = bullet.instantiate()
+				get_parent().add_child(inst)
+				inst.transform = spawn_point.global_transform
+		else:
+			if shoot_chance <= 10:
+				var inst: EnemyBullet = bullet.instantiate()
+				get_parent().add_child(inst)
+				inst.transform = spawn_point.global_transform

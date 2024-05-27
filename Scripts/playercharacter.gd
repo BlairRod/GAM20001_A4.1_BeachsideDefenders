@@ -3,12 +3,16 @@ extends CharacterBody2D
 class_name Player
 
 @export var bullet: PackedScene
+@export var playerLives = 3
 @onready var spawn_point: Marker2D = $Muzzle
 @onready var cooldown := $Cooldown
 @onready var player_animation : AnimationPlayer = $PlayerAnimations
 @onready var player_sprite : Sprite2D = $Sprite2D
+@onready var respawn_timer := $Respawn
+@onready var lifeLabel = $"../CanvasLayer/UserInterface/LifeLabel"
 
 var speed = 200
+var initial_speed = 200
 var padding = 20
 var is_shooting : bool = false
 
@@ -44,3 +48,15 @@ func _physics_process(_delta):
 func _on_player_animations_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "fire"):
 		is_shooting = false
+
+func respawn() -> void:
+	visible = false
+	speed = 0
+	playerLives -= 1
+	lifeLabel.text = "Lives: %d" % playerLives
+	position = Vector2(576, 524)
+	respawn_timer.start()
+
+func _on_respawn_timeout():
+	visible = true
+	speed = initial_speed

@@ -1,6 +1,6 @@
 extends Node2D
 
-#class_name MainGame
+class_name MainGame
 
 @export var enemy_scene = preload("res://Scenes/enemy.tscn")
 

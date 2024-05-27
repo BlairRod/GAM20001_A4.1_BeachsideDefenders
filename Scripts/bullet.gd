@@ -2,9 +2,12 @@ extends Area2D
 
 class_name Bullet
 
+
 @onready var bullet_animation : AnimationPlayer = $AnimationPlayer
+
+@export var killCount = 0
 var speed: float = 5.0
-var damage: float = 100.0
+var killed_enemies: int = 1
 var time_to_live: float =  1.75
 
 # Called when the node enters the scene tree for the first time.
@@ -27,9 +30,10 @@ func _physics_process(_delta: float) -> void:
 func on_body_entered(_body: Node2D) -> void:
 	pass # Replace with function body.
 
-
 func _on_area_entered(area):
 	if area is Enemy:
 		var enemy: Enemy = area as Enemy
-		enemy.apply_damage(damage)
+		enemy.apply_damage()
+		
 	queue_free()
+	killCount += 1
