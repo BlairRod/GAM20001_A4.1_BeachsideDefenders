@@ -52,9 +52,16 @@ func spawn_enemy(enemy_config, spawn_position: Vector2):
 	add_child(enemy)
 	#enemies_array.append(enemy)
 
-## Key input event handling
-#func _input(event : InputEvent):
-	## Esc key pauses game
-	#if event.is_action_pressed("ui_cancel"):
-		#$PauseCanvas.show()
-		#game_paused = !game_paused
+func EndGame():
+		SceneSwitcher.switch_scene("res://Scenes/end.tscn")
+
+# Key input event handling
+func _input(event : InputEvent):
+	# Esc key pauses game
+	if event.is_action_pressed("end_game_win"):
+		GlobalSingleton.GameWon = true
+		EndGame()
+	elif event.is_action_pressed("end_game_loss"):
+		GlobalSingleton.GameWon = false
+		EndGame()
+		
