@@ -19,14 +19,14 @@ func handle_time_to_live() -> void:
 	ttl_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	position += transform.y * speed
 
 func _on_body_entered(body):
 	if body is Player:
 		var player: Player = body as Player
 		player.respawn()
-		print('You have been shot')
+		#print('You have been shot')
 	queue_free()
 
 

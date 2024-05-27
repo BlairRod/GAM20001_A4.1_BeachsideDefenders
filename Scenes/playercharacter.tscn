@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://0fdj0oxe5lby"]
+[gd_scene load_steps=14 format=3 uid="uid://0fdj0oxe5lby"]
 
 [ext_resource type="Script" path="res://Scripts/playercharacter.gd" id="1_780ig"]
 [ext_resource type="PackedScene" uid="uid://ouc1lsppmo3m" path="res://Scenes/bullet.tscn" id="2_x4q4d"]
 [ext_resource type="Texture2D" uid="uid://b572kn7mkvuro" path="res://Assets/Images/Spritesheet/Spritesheet.png" id="3_5wxp3"]
+[ext_resource type="AudioStream" uid="uid://cpb81q86boism" path="res://Assets/Sound/sfx/Builder_Game_Magic_Fire_Work_1.wav" id="4_gqdpr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t22tn"]
 size = Vector2(18, 32)
@@ -200,6 +201,11 @@ libraries = {
 [node name="Respawn" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="FireSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1, -25)
+stream = ExtResource("4_gqdpr")
+volume_db = 6.0
 
 [connection signal="animation_finished" from="PlayerAnimations" to="." method="_on_player_animations_animation_finished"]
 [connection signal="timeout" from="Respawn" to="." method="_on_respawn_timeout"]

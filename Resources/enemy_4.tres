@@ -7,5 +7,7 @@
 script = ExtResource("1_dh7pt")
 sprite = ExtResource("2_lrair")
 width = 1
-points = 50
-enemy_animation = "move_4"
+points = 100
+enemy_move_animation = "move_4"
+enemy_death_animation = "death_4"
+enemy_shoot_animation = ""

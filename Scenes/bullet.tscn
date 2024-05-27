@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ouc1lsppmo3m"]
+[gd_scene load_steps=7 format=3 uid="uid://ouc1lsppmo3m"]
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_g1v46"]
 [ext_resource type="Texture2D" uid="uid://b572kn7mkvuro" path="res://Assets/Images/Spritesheet/Spritesheet.png" id="2_vekfg"]
-[ext_resource type="AudioStream" uid="uid://bf3ao68q84fw7" path="res://Assets/Sound/zapsplat_cartoon_anime_laser_blast_small_92470.mp3" id="3_i3aok"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r1nlv"]
 radius = 2.0
@@ -63,7 +62,6 @@ vframes = 10
 frame = 50
 
 [node name="bulletSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_i3aok")
 volume_db = -20.0
 autoplay = true
 
