@@ -11,7 +11,7 @@ func _ready():
     if win:
         label.text = "You Win! Score: " + str(score)
     else:
-        label.text = "Game Over! Your land was invaded."
+        label.text = "Game Over! Your beach was invaded."
     
    
     $ReplayButton.connect("pressed", self, "_on_replay_button_pressed")
