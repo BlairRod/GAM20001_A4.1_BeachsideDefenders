@@ -61,17 +61,17 @@ func apply_damage() ->void:
 	enemy_animations.play(config.enemy_death_animation)
 	score += 10
 	GlobalSingleton.Score += points
-	#killed_enemies += 1
-	#print(killed_enemies)
+	GlobalSingleton.KilledEnemies += 1
+	print(GlobalSingleton.KilledEnemies)
 	score_label.text = "Score: %s" % str(GlobalSingleton.Score)
 	GlobalSingleton.EnemiesLeft -= 1
 	$AudioStreamPlayer2D2.play()
 
 func enemy_shoots() -> void:
 	if xtimer.is_stopped():
-		shoot_chance = randi_range(0,100)
-		if killed_enemies < 10:
-			if shoot_chance <= killed_enemies:
+		shoot_chance = randi_range(0,1000)
+		if GlobalSingleton.KilledEnemies < 10:
+			if shoot_chance <= GlobalSingleton.KilledEnemies:
 				shoot()
 		else:
 			if shoot_chance <= 10:
